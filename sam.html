@@ -1,0 +1,2040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHAIK SAMEER AHMED | Tech Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #00f7ff;
+            --secondary-color: #0066ff;
+            --accent-color: #ff00aa;
+            --light-color: #e0f7fa;
+            --dark-color: #0a192f;
+            --success-color: #00ff88;
+            --warning-color: #ffcc00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Sci-fi background elements */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(0, 247, 255, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(255, 0, 170, 0.1) 0%, transparent 20%),
+                linear-gradient(to bottom, transparent 95%, rgba(0, 102, 255, 0.3) 100%);
+            z-index: -1;
+        }
+
+        .grid-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(to right, rgba(0, 247, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 247, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+        }
+
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            filter: blur(40px);
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--primary-color);
+            top: 20%;
+            left: 10%;
+            animation: float 15s infinite alternate ease-in-out;
+        }
+
+        .shape-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent-color);
+            bottom: 10%;
+            right: 10%;
+            animation: float 18s infinite alternate-reverse ease-in-out;
+        }
+
+        .shape-3 {
+            width: 200px;
+            height: 200px;
+            background: var(--secondary-color);
+            top: 50%;
+            right: 20%;
+            animation: float 12s infinite alternate ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(50px, 50px) rotate(180deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+
+        /* Terminal-like cursor effect */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background: var(--primary-color);
+            margin-left: 5px;
+            vertical-align: middle;
+            animation: blink 1s infinite;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 25, 47, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 247, 255, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--light-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        header {
+            background: rgba(10, 25, 47, 0.8);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            position: relative;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 247, 255, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(0, 247, 255, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .personal-info {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 1rem;
+            background: rgba(10, 25, 47, 0.6);
+            border-radius: 10px;
+            border: 1px solid rgba(0, 247, 255, 0.2);
+            margin-bottom: 2rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .personal-info p {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .highlight {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .project-card {
+            background: rgba(10, 25, 47, 0.7);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(0, 247, 255, 0.1);
+            position: relative;
+        }
+
+        .project-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            border-color: rgba(0, 247, 255, 0.3);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            filter: grayscale(30%) contrast(110%);
+            transition: filter 0.3s ease;
+        }
+
+        .project-card:hover img {
+            filter: grayscale(0%) contrast(120%);
+        }
+
+        .project-card-content {
+            padding: 1.5rem;
+        }
+
+        .project-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .project-card p {
+            color: #b8c2d8;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .project-card .btn {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+            color: var(--dark-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .project-card .btn:hover {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            box-shadow: 0 0 15px rgba(0, 247, 255, 0.5);
+        }
+
+        .project-display {
+            background: rgba(10, 25, 47, 0.8);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            margin-bottom: 3rem;
+            display: none;
+            border: 1px solid rgba(0, 247, 255, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .project-display.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            background: rgba(0, 102, 255, 0.2);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 247, 255, 0.3);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .back-btn:hover {
+            background: rgba(0, 102, 255, 0.4);
+            box-shadow: 0 0 10px rgba(0, 247, 255, 0.3);
+        }
+
+        /* Contact Section */
+        #contact {
+            background: rgba(10, 25, 47, 0.8);
+            padding: 3rem 0;
+            border-top: 1px solid rgba(0, 247, 255, 0.3);
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .contact-info, .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-info h2, .contact-form h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1.5rem;
+            color: #b8c2d8;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 102, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .contact-text h4 {
+            color: var(--light-color);
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-text a {
+            color: #b8c2d8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-text a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 102, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--primary-color);
+            color: var(--dark-color);
+            transform: translateY(-3px);
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 0.8rem;
+            background: rgba(10, 25, 47, 0.7);
+            border: 1px solid rgba(0, 247, 255, 0.3);
+            border-radius: 5px;
+            color: var(--light-color);
+            font-family: 'Orbitron', sans-serif;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--primary-color);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form button {
+            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+            color: var(--dark-color);
+            border: none;
+            padding: 0.8rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            box-shadow: 0 0 15px rgba(0, 247, 255, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 25, 47, 0.9);
+            text-align: center;
+            padding: 1.5rem;
+            border-top: 1px solid rgba(0, 247, 255, 0.3);
+        }
+
+        footer p {
+            color: #b8c2d8;
+            font-size: 0.9rem;
+        }
+
+        /* AI Waste Management Styles */
+        .waste-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .waste-input-section, .waste-output-section {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .waste-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .waste-form select, .waste-form input, .waste-form textarea {
+            padding: 0.8rem;
+            border: 1px solid rgba(0, 247, 255, 0.3);
+            border-radius: 5px;
+            font-size: 1rem;
+            background: rgba(10, 25, 47, 0.7);
+            color: var(--light-color);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .waste-form button {
+            background: linear-gradient(90deg, var(--success-color), #00cc77);
+            color: var(--dark-color);
+            border: none;
+            padding: 0.8rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .waste-form button:hover {
+            background: linear-gradient(90deg, #00cc77, var(--success-color));
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+        }
+
+        .waste-result {
+            background: rgba(10, 25, 47, 0.7);
+            padding: 1.5rem;
+            border-radius: 5px;
+            border-left: 5px solid var(--success-color);
+            margin-top: 1rem;
+            color: #b8c2d8;
+        }
+
+        /* Blockchain Voting Styles */
+        .voting-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .voting-candidates, .voting-results {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .candidate-card {
+            background: rgba(10, 25, 47, 0.7);
+            border: 1px solid rgba(0, 247, 255, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .candidate-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border-color: rgba(0, 247, 255, 0.4);
+        }
+
+        .candidate-card h4 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .candidate-card p {
+            color: #b8c2d8;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .vote-btn {
+            background: linear-gradient(90deg, var(--secondary-color), #0055cc);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .vote-btn:hover {
+            background: linear-gradient(90deg, #0055cc, var(--secondary-color));
+            box-shadow: 0 0 10px rgba(0, 102, 255, 0.5);
+        }
+
+        .results-chart {
+            height: 300px;
+            background: rgba(10, 25, 47, 0.7);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            border: 1px solid rgba(0, 247, 255, 0.2);
+        }
+
+        .block-info {
+            background: rgba(10, 25, 47, 0.7);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-family: monospace;
+            font-size: 0.8rem;
+            overflow-x: auto;
+            color: #b8c2d8;
+            border: 1px solid rgba(0, 247, 255, 0.2);
+        }
+
+        /* Mental Health Chatbot Styles */
+        .chatbot-container {
+            display: flex;
+            flex-direction: column;
+            height: 500px;
+            border: 1px solid rgba(0, 247, 255, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            background: rgba(10, 25, 47, 0.7);
+        }
+
+        .chatbot-header {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: var(--dark-color);
+            padding: 1rem;
+            text-align: center;
+            font-weight: 500;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            background: rgba(10, 25, 47, 0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 0.8rem 1.2rem;
+            border-radius: 18px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .bot-message {
+            align-self: flex-start;
+            background: rgba(10, 25, 47, 0.9);
+            border: 1px solid rgba(0, 247, 255, 0.3);
+            border-bottom-left-radius: 5px;
+            color: #b8c2d8;
+        }
+
+        .user-message {
+            align-self: flex-end;
+            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+            color: var(--dark-color);
+            border-bottom-right-radius: 5px;
+        }
+
+        .chatbot-input {
+            display: flex;
+            border-top: 1px solid rgba(0, 247, 255, 0.3);
+            background: rgba(10, 25, 47, 0.9);
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            background: transparent;
+            color: var(--light-color);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .chatbot-input button {
+            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+            color: var(--dark-color);
+            border: none;
+            padding: 0 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .chatbot-input button:hover {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        /* Solar Optimizer Styles */
+        .solar-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .solar-input, .solar-output {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .solar-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .solar-form input, .solar-form select {
+            padding: 0.8rem;
+            border: 1px solid rgba(0, 247, 255, 0.3);
+            border-radius: 5px;
+            font-size: 1rem;
+            background: rgba(10, 25, 47, 0.7);
+            color: var(--light-color);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .solar-form button {
+            background: linear-gradient(90deg, var(--warning-color), #e6b800);
+            color: var(--dark-color);
+            border: none;
+            padding: 0.8rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .solar-form button:hover {
+            background: linear-gradient(90deg, #e6b800, var(--warning-color));
+            box-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+        }
+
+        .solar-result {
+            background: rgba(10, 25, 47, 0.7);
+            padding: 1.5rem;
+            border-radius: 5px;
+            border-left: 5px solid var(--warning-color);
+            margin-top: 1rem;
+            color: #b8c2d8;
+        }
+
+        .solar-chart {
+            height: 300px;
+            background: rgba(10, 25, 47, 0.7);
+            border-radius: 8px;
+            margin-top: 1rem;
+            border: 1px solid rgba(0, 247, 255, 0.2);
+        }
+
+        /* Smart Traffic Control Styles */
+        .traffic-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .traffic-map, .traffic-controls {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .traffic-simulation {
+            height: 400px;
+            background: rgba(10, 25, 47, 0.7);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 247, 255, 0.3);
+        }
+
+        .road {
+            position: absolute;
+            background: #1a2a4a;
+        }
+
+        .horizontal-road {
+            width: 100%;
+            height: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .vertical-road {
+            width: 60px;
+            height: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .traffic-light {
+            position: absolute;
+            width: 30px;
+            height: 80px;
+            background: #0a192f;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 5px;
+            border: 1px solid rgba(0, 247, 255, 0.3);
+        }
+
+        .light {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #1a2a4a;
+        }
+
+        .light.active.red {
+            background: #ff0033;
+            box-shadow: 0 0 10px #ff0033;
+        }
+
+        .light.active.yellow {
+            background: #ffcc00;
+            box-shadow: 0 0 10px #ffcc00;
+        }
+
+        .light.active.green {
+            background: #00ff88;
+            box-shadow: 0 0 10px #00ff88;
+        }
+
+        .car {
+            position: absolute;
+            width: 40px;
+            height: 20px;
+            background: var(--secondary-color);
+            border-radius: 3px;
+            transition: left 2s linear, top 2s linear;
+            box-shadow: 0 0 10px rgba(0, 102, 255, 0.5);
+        }
+
+        .traffic-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .traffic-controls button {
+            padding: 0.8rem;
+            background: linear-gradient(90deg, var(--accent-color), #cc0099);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .traffic-controls button:hover {
+            background: linear-gradient(90deg, #cc0099, var(--accent-color));
+            box-shadow: 0 0 15px rgba(255, 0, 170, 0.5);
+        }
+
+        .traffic-stats {
+            background: rgba(10, 25, 47, 0.7);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border: 1px solid rgba(0, 247, 255, 0.3);
+            color: #b8c2d8;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .waste-container, .voting-container, .solar-container, .traffic-container {
+                flex-direction: column;
+            }
+            
+            .personal-info {
+                padding: 0.5rem;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: space-around;
+            }
+        }
+
+        /* Glowing text animation */
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px var(--primary-color); }
+            50% { text-shadow: 0 0 20px var(--primary-color); }
+            100% { text-shadow: 0 0 5px var(--primary-color); }
+        }
+
+        .glow-text {
+            animation: glow 2s infinite;
+        }
+
+        /* Section padding for navigation */
+        section {
+            padding: 2rem 0;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="grid-lines"></div>
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-logo">SHAIK ZAMEER</a>
+            <div class="nav-links">
+                <a href="#" onclick="scrollToSection('home')">Home</a>
+                <a href="#" onclick="scrollToSection('about')">My Info</a>
+                <a href="#" onclick="scrollToSection('projects')">Projects</a>
+                <a href="#" onclick="scrollToSection('contact')">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <header>
+            <div class="container">
+                <h1>SHAIK ZAMEER AHMED</h1>
+                <p class="subtitle">TECHNOLOGY PORTFOLIO</p>
+                <p class="subtitle glow-text">23BRS1138</p>
+            </div>
+        </header>
+    </section>
+
+    <div class="container">
+        <!-- About Section -->
+        <section id="about">
+            <div class="personal-info">
+                <p><span class="highlight">>> STATUS:</span> <span id="typing-text"></span><span class="cursor"></span></p>
+                <p><span class="highlight">>> EDUCATION:</span> 2nd Year B.Tech Student at VIT Chennai</p>
+                <p><span class="highlight">>> SPECIALIZATION:</span> Computer Science & Engineering</p>
+                <p><span class="highlight">>> INTERESTS:</span> AI/ML, Blockchain, IoT, Quantum Computing</p>
+                <p><span class="highlight">>> PHILOSOPHY:</span> "Innovate to Elevate"</p>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <div id="projects-list">
+                <h2 style="margin-bottom: 1.5rem; color: var(--primary-color); border-bottom: 1px solid rgba(0, 247, 255, 0.3); padding-bottom: 0.5rem;">PROJECT SHOWCASE</h2>
+                
+                <div class="projects-grid">
+                    <div class="project-card" onclick="showProject('ai-waste')">
+                        <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="AI Waste Management">
+                        <div class="project-card-content">
+                            <h3>AI Waste Management</h3>
+                            <p>An intelligent system that classifies waste and optimizes collection routes using machine learning.</p>
+                            <div class="btn">View Project</div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" onclick="showProject('blockchain-voting')">
+                        <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Blockchain Voting System">
+                        <div class="project-card-content">
+                            <h3>Blockchain Voting System</h3>
+                            <p>A secure, transparent voting platform leveraging blockchain technology for tamper-proof elections.</p>
+                            <div class="btn">View Project</div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" onclick="showProject('mental-health-chatbot')">
+                        <img src="https://images.unsplash.com/photo-1593642634524-b40b5baae6bb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Mental Health Chatbot">
+                        <div class="project-card-content">
+                            <h3>Mental Health Chatbot</h3>
+                            <p>An AI-powered chatbot providing mental health support and resources using natural language processing.</p>
+                            <div class="btn">View Project</div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" onclick="showProject('solar-optimizer')">
+                        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Solar Optimizer">
+                        <div class="project-card-content">
+                            <h3>Solar Optimizer</h3>
+                            <p>A system that maximizes solar energy production through panel orientation and efficiency analysis.</p>
+                            <div class="btn">View Project</div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" onclick="showProject('smart-traffic')">
+                        <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Smart Traffic Control">
+                        <div class="project-card-content">
+                            <h3>Smart Traffic Control</h3>
+                            <p>An IoT-based system that optimizes traffic flow using real-time data and adaptive signal timing.</p>
+                            <div class="btn">View Project</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project displays -->
+            <!-- AI Waste Management Project -->
+            <div id="ai-waste" class="project-display">
+                <a href="#" class="back-btn" onclick="hideProjects()">&larr; Back to Projects</a>
+                <h2>AI Waste Management System</h2>
+                <p>This system uses machine learning to classify waste and optimize collection routes for municipalities.</p>
+                
+                <div class="waste-container">
+                    <div class="waste-input-section">
+                        <h3>Waste Classification</h3>
+                        <form class="waste-form" id="wasteForm">
+                            <select id="wasteType" required>
+                                <option value="">Select Waste Type</option>
+                                <option value="organic">Organic Waste</option>
+                                <option value="plastic">Plastic</option>
+                                <option value="paper">Paper</option>
+                                <option value="metal">Metal</option>
+                                <option value="glass">Glass</option>
+                                <option value="electronic">Electronic Waste</option>
+                                <option value="hazardous">Hazardous Waste</option>
+                            </select>
+                            
+                            <input type="number" id="wasteQuantity" placeholder="Quantity (kg)" min="1" required>
+                            
+                            <textarea id="wasteDescription" placeholder="Additional description (optional)" rows="3"></textarea>
+                            
+                            <button type="submit">Classify & Process</button>
+                        </form>
+                    </div>
+                    
+                    <div class="waste-output-section">
+                        <h3>Processing Results</h3>
+                        <div class="waste-result" id="wasteResult">
+                            <p>Submit waste details to get classification and processing recommendations.</p>
+                        </div>
+                        
+                        <h3 style="margin-top: 2rem;">Collection Route Optimization</h3>
+                        <div id="wasteMap" style="height: 200px; background: rgba(10, 25, 47, 0.5); border-radius: 8px; margin-top: 1rem; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(0, 247, 255, 0.3);">
+                            <p>Route visualization will appear here</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blockchain Voting System Project -->
+            <div id="blockchain-voting" class="project-display">
+                <a href="#" class="back-btn" onclick="hideProjects()">&larr; Back to Projects</a>
+                <h2>Blockchain Voting System</h2>
+                <p>A secure, decentralized voting platform that ensures transparency and prevents tampering.</p>
+                
+                <div class="voting-container">
+                    <div class="voting-candidates">
+                        <h3>Candidates</h3>
+                        <p>Select your preferred candidate and cast your vote:</p>
+                        
+                        <div class="candidate-card">
+                            <h4>Candidate A: John Smith</h4>
+                            <p>Party: Progressive Alliance<br>Platform: Economic reform, education investment</p>
+                            <button class="vote-btn" onclick="castVote('candidateA')">Vote for John</button>
+                        </div>
+                        
+                        <div class="candidate-card">
+                            <h4>Candidate B: Sarah Johnson</h4>
+                            <p>Party: Unity Party<br>Platform: Healthcare reform, environmental protection</p>
+                            <button class="vote-btn" onclick="castVote('candidateB')">Vote for Sarah</button>
+                        </div>
+                        
+                        <div class="candidate-card">
+                            <h4>Candidate C: Michael Brown</h4>
+                            <p>Party: Traditional Values<br>Platform: Tax reduction, national security</p>
+                            <button class="vote-btn" onclick="castVote('candidateC')">Vote for Michael</button>
+                        </div>
+                    </div>
+                    
+                    <div class="voting-results">
+                        <h3>Live Results</h3>
+                        <p>Real-time voting results powered by blockchain technology:</p>
+                        
+                        <div class="results-chart" id="votingChart">
+                            <!-- Chart will be rendered here -->
+                        </div>
+                        
+                        <h3 style="margin-top: 2rem;">Blockchain Transaction</h3>
+                        <div class="block-info" id="blockchainInfo">
+                            <p>Your vote will be recorded as a transaction on the blockchain.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mental Health Chatbot Project -->
+            <div id="mental-health-chatbot" class="project-display">
+                <a href="#" class="back-btn" onclick="hideProjects()">&larr; Back to Projects</a>
+                <h2>Mental Health Chatbot</h2>
+                <p>An AI companion that provides mental health support and resources in a confidential environment.</p>
+                
+                <div class="chatbot-container">
+                    <div class="chatbot-header">
+                        Mental Health Support Assistant
+                    </div>
+                    
+                    <div class="chatbot-messages" id="chatbotMessages">
+                        <div class="message bot-message">
+                            Hello! I'm here to provide mental health support. How are you feeling today?
+                        </div>
+                    </div>
+                    
+                    <div class="chatbot-input">
+                        <input type="text" id="userMessage" placeholder="Type your message here..." autocomplete="off">
+                        <button onclick="sendMessage()">Send</button>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 2rem;">
+                    <h3>Resources</h3>
+                    <p>If you're in crisis or need immediate help, please contact:</p>
+                    <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                        <li>National Suicide Prevention Lifeline: 1-800-273-TALK (8255)</li>
+                        <li>Crisis Text Line: Text HOME to 741741</li>
+                        <li>Your local mental health services</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Solar Optimizer Project -->
+            <div id="solar-optimizer" class="project-display">
+                <a href="#" class="back-btn" onclick="hideProjects()">&larr; Back to Projects</a>
+                <h2>Solar Energy Optimization System</h2>
+                <p>Maximize your solar energy production with intelligent panel orientation and efficiency analysis.</p>
+                
+                <div class="solar-container">
+                    <div class="solar-input">
+                        <h3>System Configuration</h3>
+                        <form class="solar-form" id="solarForm">
+                            <input type="text" id="location" placeholder="Location (City or Address)" required>
+                            
+                            <select id="roofType" required>
+                                <option value="">Select Roof Type</option>
+                                <option value="flat">Flat Roof</option>
+                                <option value="pitched">Pitched Roof</option>
+                                <option value="ground">Ground Mount</option>
+                            </select>
+                            
+                            <select id="roofDirection" required>
+                                <option value="">Select Roof Direction</option>
+                                <option value="north">North</option>
+                                <option value="south">South</option>
+                                <option value="east">East</option>
+                                <option value="west">West</option>
+                            </select>
+                            
+                            <input type="number" id="panelCount" placeholder="Number of Solar Panels" min="1" required>
+                            
+                            <input type="number" id="panelWattage" placeholder="Panel Wattage (W)" min="100" required>
+                            
+                            <button type="submit">Optimize System</button>
+                        </form>
+                    </div>
+                    
+                    <div class="solar-output">
+                        <h3>Optimization Results</h3>
+                        <div class="solar-result" id="solarResult">
+                            <p>Enter your system details to get optimization recommendations.</p>
+                        </div>
+                        
+                        <h3 style="margin-top: 2rem;">Energy Production Forecast</h3>
+                        <div class="solar-chart" id="solarChart">
+                            <!-- Chart will be rendered here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Smart Traffic Control Project -->
+            <div id="smart-traffic" class="project-display">
+                <a href="#" class="back-btn" onclick="hideProjects()">&larr; Back to Projects</a>
+                <h2>Smart Traffic Control System</h2>
+                <p>An IoT-based solution that optimizes traffic flow using real-time data and adaptive signal timing.</p>
+                
+                <div class="traffic-container">
+                    <div class="traffic-map">
+                        <h3>Traffic Simulation</h3>
+                        <div class="traffic-simulation" id="trafficSimulation">
+                            <div class="road horizontal-road"></div>
+                            <div class="road vertical-road"></div>
+                            
+                            <div class="traffic-light" style="top: 20px; left: 50%; transform: translateX(-50%);">
+                                <div class="light red active" id="northLight"></div>
+                                <div class="light yellow" id="northYellow"></div>
+                                <div class="light green" id="northGreen"></div>
+                            </div>
+                            
+                            <div class="traffic-light" style="bottom: 20px; left: 50%; transform: translateX(-50%);">
+                                <div class="light red" id="southLight"></div>
+                                <div class="light yellow" id="southYellow"></div>
+                                <div class="light green active" id="southGreen"></div>
+                            </div>
+                            
+                            <div class="traffic-light" style="top: 50%; left: 20px; transform: translateY(-50%); flex-direction: row;">
+                                <div class="light red" id="westLight"></div>
+                                <div class="light yellow" id="westYellow"></div>
+                                <div class="light green active" id="westGreen"></div>
+                            </div>
+                            
+                            <div class="traffic-light" style="top: 50%; right: 20px; transform: translateY(-50%); flex-direction: row;">
+                                <div class="light red active" id="eastLight"></div>
+                                <div class="light yellow" id="eastYellow"></div>
+                                <div class="light green" id="eastGreen"></div>
+                            </div>
+                            
+                            <div class="car" id="car1" style="top: 30%; left: -50px;"></div>
+                            <div class="car" id="car2" style="top: 70%; left: -50px;"></div>
+                            <div class="car" id="car3" style="left: 30%; top: -50px;"></div>
+                            <div class="car" id="car4" style="left: 70%; top: -50px;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="traffic-controls">
+                        <h3>Traffic Control</h3>
+                        <p>Adjust traffic light timing based on real-time conditions:</p>
+                        
+                        <button onclick="startSimulation()">Start Simulation</button>
+                        <button onclick="stopSimulation()">Stop Simulation</button>
+                        <button onclick="emergencyMode()">Emergency Vehicle Mode</button>
+                        <button onclick="pedestrianMode()">Pedestrian Crossing</button>
+                        
+                        <div class="traffic-stats">
+                            <h4>Traffic Statistics</h4>
+                            <p>Vehicles passed: <span id="vehicleCount">0</span></p>
+                            <p>Average wait time: <span id="waitTime">0</span> seconds</p>
+                            <p>Current congestion level: <span id="congestionLevel">Low</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Get In Touch</h2>
+                <p>Feel free to reach out to me for collaborations, job opportunities, or just to say hello!</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <a href="mailto:zameer.ahmed@example.com">zameer.ahmed@example.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Phone</h4>
+                            <a href="tel:+919876543210">+91 98765 43210</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Location</h4>
+                            <p>VIT Chennai, Tamil Nadu, India</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h2>Send Me a Message</h2>
+                <form id="contactForm">
+                    <input type="text" id="name" placeholder="Your Name" required>
+                    <input type="email" id="email" placeholder="Your Email" required>
+                    <input type="text" id="subject" placeholder="Subject">
+                    <textarea id="message" placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 Shaik Zameer Ahmed. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Typing animation for personal info
+        const typingText = document.getElementById('typing-text');
+        const phrases = [
+            "Tech Enthusiast",
+            "AI Researcher",
+            "Blockchain Developer",
+            "IoT Specialist",
+            "VIT Chennai Student"
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let isEnd = false;
+
+        function typeWriter() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                typingText.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingText.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isEnd = true;
+                setTimeout(() => {
+                    isDeleting = true;
+                }, 1500);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+            }
+
+            const speed = isDeleting ? 50 : isEnd ? 100 : 150;
+            setTimeout(typeWriter, speed);
+            isEnd = false;
+        }
+
+        // Start the typing animation
+        setTimeout(typeWriter, 1000);
+
+        // Smooth scrolling for navigation
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                window.scrollTo({
+                    top: section.offsetTop - 80, // Adjust for navbar height
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Global variables
+        let currentProject = null;
+        let simulationInterval;
+        let vehicleCount = 0;
+        let chatHistory = [
+            { sender: 'bot', message: 'Hello! I\'m here to provide mental health support. How are you feeling today?' }
+        ];
+
+        // Show selected project and hide others
+        function showProject(projectId) {
+            document.getElementById('projects-list').style.display = 'none';
+            document.querySelectorAll('.project-display').forEach(project => {
+                project.classList.remove('active');
+            });
+            document.getElementById(projectId).classList.add('active');
+            currentProject = projectId;
+            
+            // Initialize specific project components
+            if (projectId === 'blockchain-voting') {
+                renderVotingChart();
+            } else if (projectId === 'solar-optimizer') {
+                renderSolarChart();
+            }
+            
+            // Scroll to the top of the project display
+            window.scrollTo({
+                top: document.getElementById(projectId).offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
+
+        // Hide projects and show main list
+        function hideProjects() {
+            document.getElementById('projects-list').style.display = 'block';
+            document.querySelectorAll('.project-display').forEach(project => {
+                project.classList.remove('active');
+            });
+            currentProject = null;
+            
+            // Stop any running simulations
+            if (simulationInterval) {
+                clearInterval(simulationInterval);
+                simulationInterval = null;
+            }
+            
+            // Scroll back to projects section
+            scrollToSection('projects');
+        }
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send the form data to a server
+            // For this example, we'll just show a success message
+            alert(`Thank you, ${name}! Your message has been sent successfully. I'll get back to you soon at ${email}.`);
+            
+            // Reset the form
+            this.reset();
+        });
+
+        // AI Waste Management Functions
+        document.getElementById('wasteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const wasteType = document.getElementById('wasteType').value;
+            const quantity = document.getElementById('wasteQuantity').value;
+            const description = document.getElementById('wasteDescription').value;
+            
+            // Simulate AI processing
+            setTimeout(() => {
+                const recommendations = getWasteRecommendations(wasteType, quantity);
+                const route = getCollectionRoute(wasteType, quantity);
+                
+                let resultHTML = `
+                    <h4>Waste Classification Result</h4>
+                    <p><strong>Type:</strong> ${wasteType.charAt(0).toUpperCase() + wasteType.slice(1)} Waste</p>
+                    <p><strong>Quantity:</strong> ${quantity} kg</p>
+                    ${description ? `<p><strong>Description:</strong> ${description}</p>` : ''}
+                    <p><strong>Processing Recommendation:</strong> ${recommendations.processing}</p>
+                    <p><strong>Disposal Method:</strong> ${recommendations.disposal}</p>
+                    <p><strong>Recycling Potential:</strong> ${recommendations.recycling}</p>
+                    
+                    <h4 style="margin-top: 1.5rem;">Collection Schedule</h4>
+                    <p>${route.schedule}</p>
+                    <p>Estimated collection time: ${route.time}</p>
+                `;
+                
+                document.getElementById('wasteResult').innerHTML = resultHTML;
+                
+                // Update map visualization
+                document.getElementById('wasteMap').innerHTML = `
+                    <p>Optimal collection route for ${wasteType} waste covering ${quantity} kg</p>
+                    <div style="width: 80%; height: 80%; background: rgba(10, 25, 47, 0.9); border-radius: 5px; position: relative;">
+                        <div style="position: absolute; width: 100%; height: 2px; background: ${getWasteColor(wasteType)}; top: 50%; left: 0; transform: translateY(-50%);"></div>
+                        <div style="position: absolute; width: 10px; height: 10px; background: ${getWasteColor(wasteType)}; border-radius: 50%; top: 50%; left: 10%; transform: translate(-50%, -50%);"></div>
+                        <div style="position: absolute; width: 10px; height: 10px; background: ${getWasteColor(wasteType)}; border-radius: 50%; top: 50%; left: 30%; transform: translate(-50%, -50%);"></div>
+                        <div style="position: absolute; width: 10px; height: 10px; background: ${getWasteColor(wasteType)}; border-radius: 50%; top: 50%; left: 70%; transform: translate(-50%, -50%);"></div>
+                        <div style="position: absolute; width: 10px; height: 10px; background: ${getWasteColor(wasteType)}; border-radius: 50%; top: 50%; left: 90%; transform: translate(-50%, -50%);"></div>
+                    </div>
+                `;
+            }, 1000);
+        });
+
+        function getWasteRecommendations(type, quantity) {
+            const recommendations = {
+                organic: {
+                    processing: "Composting or anaerobic digestion",
+                    disposal: "Organic waste bin",
+                    recycling: "High - can be converted to compost or biogas"
+                },
+                plastic: {
+                    processing: "Sorting and recycling",
+                    disposal: "Recycling bin (check local guidelines)",
+                    recycling: "Depends on plastic type (1-7)"
+                },
+                paper: {
+                    processing: "Pulping and recycling",
+                    disposal: "Paper recycling bin",
+                    recycling: "High - can be recycled 5-7 times"
+                },
+                metal: {
+                    processing: "Melting and reforming",
+                    disposal: "Metal recycling bin",
+                    recycling: "High - infinitely recyclable"
+                },
+                glass: {
+                    processing: "Crushing and melting",
+                    disposal: "Glass recycling bin",
+                    recycling: "High - infinitely recyclable"
+                },
+                electronic: {
+                    processing: "Specialized e-waste recycling",
+                    disposal: "Designated e-waste collection point",
+                    recycling: "Moderate - components can be recovered"
+                },
+                hazardous: {
+                    processing: "Specialized treatment",
+                    disposal: "Hazardous waste facility",
+                    recycling: "Low - requires special handling"
+                }
+            };
+            
+            return recommendations[type] || {
+                processing: "Landfill",
+                disposal: "General waste bin",
+                recycling: "None"
+            };
+        }
+
+        function getCollectionRoute(type, quantity) {
+            const routes = {
+                organic: {
+                    schedule: "Weekly collection on Wednesday",
+                    time: "Between 8:00 AM - 12:00 PM"
+                },
+                plastic: {
+                    schedule: "Bi-weekly collection on Friday",
+                    time: "Between 1:00 PM - 5:00 PM"
+                },
+                paper: {
+                    schedule: "Monthly collection on first Monday",
+                    time: "Between 9:00 AM - 3:00 PM"
+                },
+                metal: {
+                    schedule: "Monthly collection on third Tuesday",
+                    time: "Between 10:00 AM - 2:00 PM"
+                },
+                glass: {
+                    schedule: "Monthly collection on second Thursday",
+                    time: "Between 8:00 AM - 4:00 PM"
+                },
+                electronic: {
+                    schedule: "Quarterly collection (next: June 15)",
+                    time: "Between 10:00 AM - 2:00 PM"
+                },
+                hazardous: {
+                    schedule: "Special collection required (contact facility)",
+                    time: "By appointment"
+                }
+            };
+            
+            return routes[type] || {
+                schedule: "Weekly collection on Monday",
+                time: "Between 7:00 AM - 5:00 PM"
+            };
+        }
+
+        function getWasteColor(type) {
+            const colors = {
+                organic: "#8e44ad",
+                plastic: "#3498db",
+                paper: "#f1c40f",
+                metal: "#95a5a6",
+                glass: "#1abc9c",
+                electronic: "#e74c3c",
+                hazardous: "#d35400"
+            };
+            
+            return colors[type] || "#7f8c8d";
+        }
+
+        // Blockchain Voting System Functions
+        let votes = {
+            candidateA: 0,
+            candidateB: 0,
+            candidateC: 0
+        };
+
+        function castVote(candidate) {
+            // Simulate blockchain transaction
+            const transactionId = 'tx_' + Math.random().toString(36).substr(2, 9);
+            const blockNumber = Math.floor(Math.random() * 1000) + 1;
+            const timestamp = new Date().toISOString();
+            
+            // Update votes
+            votes[candidate]++;
+            
+            // Update blockchain info
+            document.getElementById('blockchainInfo').innerHTML = `
+                <p><strong>Transaction ID:</strong> ${transactionId}</p>
+                <p><strong>Block Number:</strong> ${blockNumber}</p>
+                <p><strong>Timestamp:</strong> ${timestamp}</p>
+                <p><strong>Vote Cast:</strong> ${candidate.replace('candidate', 'Candidate ')}</p>
+                <p><strong>Transaction Hash:</strong> 0x${Math.random().toString(16).substr(2, 64)}</p>
+                <p style="color: var(--success-color); margin-top: 0.5rem;">Vote successfully recorded on the blockchain!</p>
+            `;
+            
+            // Update chart
+            renderVotingChart();
+        }
+
+        function renderVotingChart() {
+            const totalVotes = votes.candidateA + votes.candidateB + votes.candidateC;
+            const percentages = {
+                candidateA: totalVotes > 0 ? (votes.candidateA / totalVotes * 100) : 0,
+                candidateB: totalVotes > 0 ? (votes.candidateB / totalVotes * 100) : 0,
+                candidateC: totalVotes > 0 ? (votes.candidateC / totalVotes * 100) : 0
+            };
+            
+            document.getElementById('votingChart').innerHTML = `
+                <div style="display: flex; height: 100%; align-items: flex-end; justify-content: space-around; padding: 0 1rem;">
+                    <div style="display: flex; flex-direction: column; align-items: center; height: 100%;">
+                        <div style="width: 40px; height: ${percentages.candidateA}%; background: var(--secondary-color); border-radius: 5px 5px 0 0;"></div>
+                        <p style="margin-top: 0.5rem; font-size: 0.8rem;">Candidate A</p>
+                        <p style="font-size: 0.8rem; font-weight: bold;">${votes.candidateA} votes</p>
+                        <p style="font-size: 0.8rem;">${percentages.candidateA.toFixed(1)}%</p>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center; height: 100%;">
+                        <div style="width: 40px; height: ${percentages.candidateB}%; background: var(--success-color); border-radius: 5px 5px 0 0;"></div>
+                        <p style="margin-top: 0.5rem; font-size: 0.8rem;">Candidate B</p>
+                        <p style="font-size: 0.8rem; font-weight: bold;">${votes.candidateB} votes</p>
+                        <p style="font-size: 0.8rem;">${percentages.candidateB.toFixed(1)}%</p>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center; height: 100%;">
+                        <div style="width: 40px; height: ${percentages.candidateC}%; background: var(--warning-color); border-radius: 5px 5px 0 0;"></div>
+                        <p style="margin-top: 0.5rem; font-size: 0.8rem;">Candidate C</p>
+                        <p style="font-size: 0.8rem; font-weight: bold;">${votes.candidateC} votes</p>
+                        <p style="font-size: 0.8rem;">${percentages.candidateC.toFixed(1)}%</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Mental Health Chatbot Functions
+        function sendMessage() {
+            const userInput = document.getElementById('userMessage');
+            const message = userInput.value.trim();
+            
+            if (message === '') return;
+            
+            // Add user message to chat
+            addMessage('user', message);
+            userInput.value = '';
+            
+            // Simulate bot thinking
+            setTimeout(() => {
+                const response = generateBotResponse(message);
+                addMessage('bot', response);
+                
+                // Scroll to bottom
+                const messagesContainer = document.getElementById('chatbotMessages');
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }, 1000);
+        }
+
+        function addMessage(sender, message) {
+            const messagesContainer = document.getElementById('chatbotMessages');
+            const messageElement = document.createElement('div');
+            messageElement.className = `message ${sender}-message`;
+            messageElement.textContent = message;
+            messagesContainer.appendChild(messageElement);
+            
+            // Add to chat history
+            chatHistory.push({ sender, message });
+            
+            // Scroll to bottom
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function generateBotResponse(message) {
+            const lowerMessage = message.toLowerCase();
+            
+            if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+                return "Hello there! How can I help you today?";
+            } else if (lowerMessage.includes('sad') || lowerMessage.includes('depressed') || lowerMessage.includes('unhappy')) {
+                return "I'm sorry to hear you're feeling this way. Remember that it's okay to feel sad sometimes. Would you like to talk more about what's bothering you?";
+            } else if (lowerMessage.includes('anxious') || lowerMessage.includes('nervous') || lowerMessage.includes('stress')) {
+                return "Anxiety can be really challenging. Have you tried any breathing exercises? A simple technique is to breathe in for 4 seconds, hold for 4, and exhale for 6.";
+            } else if (lowerMessage.includes('thank')) {
+                return "You're welcome! I'm here to support you. Is there anything else you'd like to talk about?";
+            } else if (lowerMessage.includes('help') || lowerMessage.includes('support')) {
+                return "I can provide general support and resources. For immediate help, please consider contacting a mental health professional or crisis line.";
+            } else if (lowerMessage.includes('sleep') || lowerMessage.includes('insomnia')) {
+                return "Sleep issues are common with mental health challenges. Maintaining a regular sleep schedule and reducing screen time before bed can help.";
+            } else {
+                const genericResponses = [
+                    "I understand. Can you tell me more about how you're feeling?",
+                    "That sounds difficult. Would you like to explore coping strategies?",
+                    "I'm here to listen. What's been on your mind lately?",
+                    "Mental health is important. Remember to be kind to yourself.",
+                    "Would you like me to suggest some relaxation techniques?"
+                ];
+                return genericResponses[Math.floor(Math.random() * genericResponses.length)];
+            }
+        }
+
+        // Solar Optimizer Functions
+        document.getElementById('solarForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const location = document.getElementById('location').value;
+            const roofType = document.getElementById('roofType').value;
+            const roofDirection = document.getElementById('roofDirection').value;
+            const panelCount = document.getElementById('panelCount').value;
+            const panelWattage = document.getElementById('panelWattage').value;
+            
+            // Simulate calculations
+            setTimeout(() => {
+                const results = calculateSolarOptimization(location, roofType, roofDirection, panelCount, panelWattage);
+                
+                let resultHTML = `
+                    <h4>System Optimization Results</h4>
+                    <p><strong>Location:</strong> ${location}</p>
+                    <p><strong>System Size:</strong> ${panelCount * panelWattage / 1000} kW</p>
+                    <p><strong>Estimated Annual Production:</strong> ${results.annualProduction} kWh</p>
+                    <p><strong>Optimal Panel Angle:</strong> ${results.optimalAngle}°</p>
+                    <p><strong>Recommended Orientation:</strong> ${results.optimalOrientation}</p>
+                    <p><strong>Efficiency Improvement:</strong> ${results.efficiencyImprovement}% potential increase</p>
+                    
+                    <h4 style="margin-top: 1.5rem;">Financial Estimates</h4>
+                    <p><strong>Annual Savings:</strong> $${results.annualSavings}</p>
+                    <p><strong>Payback Period:</strong> ${results.paybackPeriod} years</p>
+                `;
+                
+                document.getElementById('solarResult').innerHTML = resultHTML;
+                
+                // Update chart
+                renderSolarChart();
+            }, 1500);
+        });
+
+        function calculateSolarOptimization(location, roofType, roofDirection, panelCount, panelWattage) {
+            // These are simulated calculations
+            const baseProduction = panelCount * panelWattage * 4; // 4 sun hours average
+            
+            // Efficiency factors
+            let angleFactor = 1;
+            let directionFactor = 1;
+            
+            if (roofType === 'flat') {
+                angleFactor = 0.85;
+            } else if (roofType === 'pitched') {
+                angleFactor = 0.95;
+            }
+            
+            if (roofDirection === 'south') {
+                directionFactor = 1;
+            } else if (roofDirection === 'east' || roofDirection === 'west') {
+                directionFactor = 0.85;
+            } else if (roofDirection === 'north') {
+                directionFactor = 0.7;
+            }
+            
+            const currentProduction = baseProduction * angleFactor * directionFactor;
+            
+            // Optimal values
+            let optimalAngle, optimalOrientation;
+            if (location.toLowerCase().includes('north') || location.toLowerCase().includes('cold')) {
+                optimalAngle = 45;
+                optimalOrientation = "South-facing with steeper angle for winter sun";
+            } else if (location.toLowerCase().includes('south') || location.toLowerCase().includes('hot')) {
+                optimalAngle = 20;
+                optimalOrientation = "South-facing with shallower angle for summer sun";
+            } else {
+                optimalAngle = 30;
+                optimalOrientation = "South-facing with moderate angle";
+            }
+            
+            const optimalProduction = baseProduction * 0.95 * 1; // Assuming optimal setup
+            
+            return {
+                annualProduction: Math.round(currentProduction * 365 / 1000),
+                optimalAngle: optimalAngle,
+                optimalOrientation: optimalOrientation,
+                efficiencyImprovement: Math.round((optimalProduction - currentProduction) / currentProduction * 100),
+                annualSavings: Math.round(currentProduction * 365 * 0.12 / 100), // $0.12 per kWh
+                paybackPeriod: Math.round((panelCount * 300) / (currentProduction * 365 * 0.12 / 100)) // $300 per panel
+            };
+        }
+
+        function renderSolarChart() {
+            document.getElementById('solarChart').innerHTML = `
+                <div style="display: flex; height: 100%; padding: 1rem;">
+                    <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end;">
+                        <div style="height: 20%; background: #f39c12; margin: 0 0.5rem; border-radius: 5px 5px 0 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem;">Jan</div>
+                    </div>
+                    <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end;">
+                        <div style="height: 30%; background: #f39c12; margin: 0 0.5rem; border-radius: 5px 5px 0 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem;">Feb</div>
+                    </div>
+                    <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end;">
+                        <div style="height: 50%; background: #f39c12; margin: 0 0.5rem; border-radius: 5px 5px 0 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem;">Mar</div>
+                    </div>
+                    <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end;">
+                        <div style="height: 70%; background: #f39c12; margin: 0 0.5rem; border-radius: 5px 5px 0 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem;">Apr</div>
+                    </div>
+                    <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end;">
+                        <div style="height: 90%; background: #f39c12; margin: 0 0.5rem; border-radius: 5px 5px 0 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem;">May</div>
+                    </div>
+                    <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end;">
+                        <div style="height: 100%; background: #f39c12; margin: 0 0.5rem; border-radius: 5px 5px 0 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem;">Jun</div>
+                    </div>
+                    <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end;">
+                        <div style="height: 100%; background: #f39c12; margin: 0 0.5rem; border-radius: 5px 5px 0 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem;">Jul</div>
+                    </div>
+                    <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end;">
+                        <div style="height: 90%; background: #f39c12; margin: 0 0.5rem; border-radius: 5px 5px 0 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem;">Aug</div>
+                    </div>
+                    <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end;">
+                        <div style="height: 70%; background: #f39c12; margin: 0 0.5rem; border-radius: 5px 5px 0 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem;">Sep</div>
+                    </div>
+                    <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end;">
+                        <div style="height: 50%; background: #f39c12; margin: 0 0.5rem; border-radius: 5px 5px 0 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem;">Oct</div>
+                    </div>
+                    <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end;">
+                        <div style="height: 30%; background: #f39c12; margin: 0 0.5rem; border-radius: 5px 5px 0 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem;">Nov</div>
+                    </div>
+                    <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end;">
+                        <div style="height: 20%; background: #f39c12; margin: 0 0.5rem; border-radius: 5px 5px 0 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem;">Dec</div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 0.5rem; font-size: 0.9rem;">
+                    Monthly Energy Production Forecast (kWh)
+                </div>
+            `;
+        }
+
+        // Smart Traffic Control Functions
+        function startSimulation() {
+            if (simulationInterval) clearInterval(simulationInterval);
+            
+            let car1Pos = -50;
+            let car2Pos = -50;
+            let car3Pos = -50;
+            let car4Pos = -50;
+            let lightState = 'southGreen'; // South and west green initially
+            let lightTimer = 0;
+            let emergencyModeActive = false;
+            let pedestrianModeActive = false;
+            
+            // Reset lights
+            document.querySelectorAll('.light').forEach(light => {
+                light.classList.remove('active');
+            });
+            document.getElementById('northLight').classList.add('active');
+            document.getElementById('southGreen').classList.add('active');
+            document.getElementById('westGreen').classList.add('active');
+            document.getElementById('eastLight').classList.add('active');
+            
+            // Reset stats
+            vehicleCount = 0;
+            updateStats();
+            
+            simulationInterval = setInterval(() => {
+                // Update light timer
+                lightTimer++;
+                
+                // Change lights based on timer (every 10 seconds)
+                if (!emergencyModeActive && !pedestrianModeActive && lightTimer >= 100) {
+                    changeLights();
+                    lightTimer = 0;
+                }
+                
+                // Move cars based on light state
+                if (lightState === 'southGreen' || emergencyModeActive) {
+                    // Southbound and westbound traffic moves
+                    car1Pos += 1;
+                    car2Pos += 1;
+                    
+                    if (car1Pos > 150) {
+                        car1Pos = -50;
+                        vehicleCount++;
+                    }
+                    if (car2Pos > 150) {
+                        car2Pos = -50;
+                        vehicleCount++;
+                    }
+                    
+                    document.getElementById('car1').style.left = car1Pos + 'px';
+                    document.getElementById('car2').style.left = car2Pos + 'px';
+                }
+                
+                if (lightState === 'northGreen' || emergencyModeActive) {
+                    // Northbound and eastbound traffic moves
+                    car3Pos += 1;
+                    car4Pos += 1;
+                    
+                    if (car3Pos > 150) {
+                        car3Pos = -50;
+                        vehicleCount++;
+                    }
+                    if (car4Pos > 150) {
+                        car4Pos = -50;
+                        vehicleCount++;
+                    }
+                    
+                    document.getElementById('car3').style.top = car3Pos + 'px';
+                    document.getElementById('car4').style.top = car4Pos + 'px';
+                }
+                
+                // Update stats
+                updateStats();
+            }, 50);
+        }
+
+        function stopSimulation() {
+            if (simulationInterval) {
+                clearInterval(simulationInterval);
+                simulationInterval = null;
+            }
+        }
+
+        function changeLights() {
+            // Toggle between north-south and east-west traffic
+            document.querySelectorAll('.light').forEach(light => {
+                light.classList.remove('active');
+            });
+            
+            if (lightState === 'southGreen') {
+                // Switch to north green
+                document.getElementById('northGreen').classList.add('active');
+                document.getElementById('southLight').classList.add('active');
+                document.getElementById('westLight').classList.add('active');
+                document.getElementById('eastGreen').classList.add('active');
+                lightState = 'northGreen';
+            } else {
+                // Switch to south green
+                document.getElementById('northLight').classList.add('active');
+                document.getElementById('southGreen').classList.add('active');
+                document.getElementById('westGreen').classList.add('active');
+                document.getElementById('eastLight').classList.add('active');
+                lightState = 'southGreen';
+            }
+        }
+
+        function emergencyMode() {
+            if (!simulationInterval) return;
+            
+            // Turn all lights red except one direction
+            document.querySelectorAll('.light').forEach(light => {
+                light.classList.remove('active', 'green', 'yellow');
+                if (light.id.includes('Light')) light.classList.add('active');
+            });
+            
+            // Make east-west green
+            document.getElementById('westGreen').classList.add('active');
+            document.getElementById('eastGreen').classList.add('active');
+            
+            // Set emergency mode for 5 seconds
+            setTimeout(() => {
+                changeLights();
+            }, 5000);
+        }
+
+        function pedestrianMode() {
+            if (!simulationInterval) return;
+            
+            // Turn all lights red
+            document.querySelectorAll('.light').forEach(light => {
+                light.classList.remove('active', 'green');
+                if (light.id.includes('Light')) light.classList.add('active');
+            });
+            
+            // Show pedestrian crossing for 5 seconds
+            setTimeout(() => {
+                changeLights();
+            }, 5000);
+        }
+
+        function updateStats() {
+            document.getElementById('vehicleCount').textContent = vehicleCount;
+            document.getElementById('waitTime').textContent = Math.floor(Math.random() * 30) + 10;
+            document.getElementById('congestionLevel').textContent = 
+                vehicleCount < 10 ? 'Low' : vehicleCount < 20 ? 'Moderate' : 'High';
+        }
+
+        // Allow pressing Enter in chatbot input
+        document.getElementById('userMessage').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>
